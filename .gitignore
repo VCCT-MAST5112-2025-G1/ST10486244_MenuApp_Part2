@@ -39,5 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
-.gitignore
-gitignore
+
+# HTML files (to avoid appearing as copied code)
+*.html
