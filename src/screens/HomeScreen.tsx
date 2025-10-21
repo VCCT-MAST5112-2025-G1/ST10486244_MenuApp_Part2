@@ -18,10 +18,36 @@ const HomeScreen: React.FC = () => {
   const { menuItems, addMenuItem, isLoaded, setIsLoaded } = useMenu();
   const [currentFilter, setCurrentFilter] = useState('all');
 
-  // Sample menu data based on the HTML file
+  // Sample menu data with all course categories
   const sampleMenuItems: MenuItem[] = [
+    // Starters
     {
       id: '1',
+      name: 'Caesar Salad',
+      description: 'Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing',
+      course: 'appetizer',
+      price: 8.99,
+      tags: ['veg', 'popular'],
+    },
+    {
+      id: '2',
+      name: 'Buffalo Wings',
+      description: 'Spicy chicken wings served with celery and blue cheese dip',
+      course: 'appetizer',
+      price: 12.50,
+      tags: ['non-veg', 'popular'],
+    },
+    {
+      id: '3',
+      name: 'Mozzarella Sticks',
+      description: 'Crispy breaded mozzarella cheese served with marinara sauce',
+      course: 'appetizer',
+      price: 7.99,
+      tags: ['veg'],
+    },
+    // Main Courses
+    {
+      id: '4',
       name: 'Spaghetti Bolognese',
       description: 'Classic Italian pasta with rich meat sauce and parmesan cheese',
       course: 'main',
@@ -29,7 +55,7 @@ const HomeScreen: React.FC = () => {
       tags: ['non-veg', 'popular'],
     },
     {
-      id: '2',
+      id: '5',
       name: 'Grilled Chicken',
       description: 'Tender grilled chicken breast with herbs and spices',
       course: 'main',
@@ -37,7 +63,7 @@ const HomeScreen: React.FC = () => {
       tags: ['non-veg', 'new'],
     },
     {
-      id: '3',
+      id: '6',
       name: 'Cheese Pizza',
       description: 'Traditional pizza with mozzarella cheese and tomato sauce',
       course: 'main',
@@ -45,7 +71,7 @@ const HomeScreen: React.FC = () => {
       tags: ['veg', 'popular'],
     },
     {
-      id: '4',
+      id: '7',
       name: 'Veggie Burger',
       description: 'Plant-based burger with fresh vegetables and special sauce',
       course: 'main',
@@ -53,21 +79,71 @@ const HomeScreen: React.FC = () => {
       tags: ['veg', 'new'],
     },
     {
-      id: '5',
+      id: '8',
       name: 'Fish Tacos',
       description: 'Fresh fish tacos with cabbage slaw and lime crema',
       course: 'main',
       price: 13.50,
       tags: ['non-veg'],
     },
+    // Desserts
+    {
+      id: '9',
+      name: 'Chocolate Cake',
+      description: 'Rich chocolate cake with chocolate ganache and fresh berries',
+      course: 'dessert',
+      price: 6.99,
+      tags: ['veg', 'popular'],
+    },
+    {
+      id: '10',
+      name: 'Tiramisu',
+      description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone',
+      course: 'dessert',
+      price: 7.50,
+      tags: ['veg'],
+    },
+    {
+      id: '11',
+      name: 'Ice Cream Sundae',
+      description: 'Vanilla ice cream with chocolate sauce, whipped cream, and cherry',
+      course: 'dessert',
+      price: 5.99,
+      tags: ['veg'],
+    },
+    // Beverages
+    {
+      id: '12',
+      name: 'Fresh Orange Juice',
+      description: 'Freshly squeezed orange juice served chilled',
+      course: 'beverage',
+      price: 3.99,
+      tags: ['veg'],
+    },
+    {
+      id: '13',
+      name: 'Cappuccino',
+      description: 'Rich espresso with steamed milk and foam',
+      course: 'beverage',
+      price: 4.50,
+      tags: ['veg', 'popular'],
+    },
+    {
+      id: '14',
+      name: 'Craft Beer',
+      description: 'Local craft beer selection - ask server for today\'s options',
+      course: 'beverage',
+      price: 5.99,
+      tags: ['non-veg'],
+    },
   ];
 
   const filterOptions = [
     { key: 'all', label: 'All' },
-    { key: 'popular', label: 'Popular' },
-    { key: 'new', label: 'New' },
-    { key: 'veg', label: 'Veg' },
-    { key: 'non-veg', label: 'Non-Veg' },
+    { key: 'appetizer', label: 'Starters' },
+    { key: 'main', label: 'Main Course' },
+    { key: 'dessert', label: 'Dessert' },
+    { key: 'beverage', label: 'Beverages' },
   ];
 
   const loadMenu = () => {
@@ -80,7 +156,8 @@ const HomeScreen: React.FC = () => {
   };
 
   const handleAddItem = () => {
-    navigation.navigate('AddItem' as never);
+    // For now, we'll show an alert since AddItem tab is commented out
+    Alert.alert('Add Item', 'Add Item functionality will be available soon!');
   };
 
   const filteredItems = useMemo(() => {
@@ -88,7 +165,7 @@ const HomeScreen: React.FC = () => {
       return menuItems;
     }
     return menuItems.filter(item => 
-      item.tags.some(tag => tag === currentFilter)
+      item.course === currentFilter
     );
   }, [menuItems, currentFilter]);
 
