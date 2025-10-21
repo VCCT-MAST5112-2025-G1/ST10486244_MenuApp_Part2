@@ -155,9 +155,8 @@ const HomeScreen: React.FC = () => {
     setIsLoaded(true);
   };
 
-  const handleAddItem = () => {
-    // For now, we'll show an alert since AddItem tab is commented out
-    Alert.alert('Add Item', 'Add Item functionality will be available soon!');
+const handleAddItem = () => {
+    navigation.navigate('AddMenuItem' as never);
   };
 
   const filteredItems = useMemo(() => {
@@ -215,7 +214,7 @@ const HomeScreen: React.FC = () => {
           horizontal 
           showsHorizontalScrollIndicator={false}
           style={styles.filterBar}
-          contentContainerStyle={{ paddingRight: 20 }}
+          contentContainerStyle={{ paddingRight: 10 }}
         >
           {filterOptions.map((option) => (
             <TouchableOpacity
