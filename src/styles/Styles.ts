@@ -1,42 +1,43 @@
 import { StyleSheet } from 'react-native';
 
 export const colors = {
-  primary: '#ff7043',
-  primaryDark: '#ff5722',
-  background: '#fffaf5',
-  backgroundSecondary: '#fff5e6',
+  primary: '#06C167',
+  primaryDark: '#04A65B',
+  background: '#FFFFFF',
+  backgroundSecondary: '#F5F5F5',
   white: '#ffffff',
-  text: '#333333',
+  text: '#1C1C1C',
   textSecondary: '#666666',
-  success: '#4caf50',
-  error: '#f44336',
+  success: '#000000',
+  error: '#E0E0E0',
   warning: '#ff9800',
   info: '#2196f3',
   // Tag colors
-  veg: '#c8e6c9',
-  vegText: '#2e7d32',
-  nonVeg: '#ffcdd2',
-  nonVegText: '#c62828',
-  popular: '#fff9c4',
-  popularText: '#f57f17',
-  new: '#b3e5fc',
-  newText: '#01579b',
+ veg: '#E6F4EA',
+  vegText: '#2E7D32',
+  nonVeg: '#FDECEA',
+  nonVegText: '#C62828',
+  popular: '#FFF8E1',
+  popularText: '#F57F17',
+  new: '#E3F2FD',
+  newText: '#01579B',
 };
 
 export const styles = StyleSheet.create({
   // Container styles
-  container: {
+   container: {
     flex: 1,
     backgroundColor: colors.background,
   },
   safeArea: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
   },
   contentContainer: {
     flex: 1,
-    padding: 15,
+    padding: 16,
   },
+
 
   // Header styles
   header: {
