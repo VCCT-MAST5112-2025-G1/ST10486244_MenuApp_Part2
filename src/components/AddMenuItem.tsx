@@ -39,47 +39,58 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
   };
 
   const validateForm = (): boolean => {
-    if (!name.trim()) {
-      Alert.alert('Error', 'Please enter a dish name');
-      return false;
-    }
-    if (!description.trim()) {
-      Alert.alert('Error', 'Please enter a description');
-      return false;
-    }
-    const priceValue = parseFloat(price);
-    if (isNaN(priceValue) || priceValue <= 0) {
-      Alert.alert('Error', 'Please enter a valid price');
-      return false;
-    }
-    if (tags.length === 0) {
-      Alert.alert('Error', 'Please select at least one tag (veg/non-veg)');
-      return false;
-    }
-    return true;
-  };
+  const trimmedName = name.trim();
+  const trimmedDescription = description.trim();
+  const priceValue = parseFloat(price);
+
+  if (!trimmedName) {
+    Alert.alert('Missing Field', 'Please enter a dish name.');
+    return false;
+  }
+
+  if (!trimmedDescription) {
+    Alert.alert('Missing Field', 'Please enter a description.');
+    return false;
+  }
+
+  if (!price) {
+    Alert.alert('Missing Field', 'Please enter a price.');
+    return false;
+  }
+
+  if (isNaN(priceValue) || priceValue <= 0) {
+    Alert.alert('Invalid Price', 'Price must be a positive number (e.g., 49.99).');
+    return false;
+  }
+
+  if (tags.length === 0) {
+    Alert.alert('Missing Tags', 'Please select at least one tag (e.g., Veg or Non-Veg).');
+    return false;
+  }
+
+  return true;
+};
 
   const handleSubmit = () => {
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    const newItem: Omit<MenuItem, 'id'> = {
-      name: name.trim(),
-      description: description.trim(),
-      course,
-      price: parseFloat(price),
-      tags,
-    };
-
-    onAddItem(newItem);
-    Alert.alert('Success', 'Menu item added successfully!');
-
-    // Reset form
-    setName('');
-    setDescription('');
-    setCourse('main');
-    setPrice('');
-    setTags([]);
+  const newItem: Omit<MenuItem, 'id'> = {
+    name: name.trim(),
+    description: description.trim(),
+    course,
+    price: parseFloat(price),
+    tags,
   };
+
+  onAddItem(newItem);
+  Alert.alert('Success', 'Menu item added successfully!');
+
+  setName('');
+  setDescription('');
+  setCourse('main');
+  setPrice('');
+  setTags([]);
+};
 
   return (
     <KeyboardAvoidingView
@@ -180,5 +191,6 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
     </KeyboardAvoidingView>
   );
 };
+
 
 export default AddMenuItem;
