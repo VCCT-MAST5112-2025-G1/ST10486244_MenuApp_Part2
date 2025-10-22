@@ -70,6 +70,46 @@ bash Copy _npx expo start
 - Works well
 
 ## YouTube 
-- 
+- https://youtu.be/-TbhXyywVpQ?si=4MBUfwaUSkrWbyA3
 ## GitHub
 - https://github.com/VCCT-MAST5112-2025-G1/ST10486244_MenuApp_Part2
+
+## Referencing
+
+- Expo. (2025) Expo documentation.
+Available at: https://docs.expo.dev/
+(Accessed: 22 October 2025)
+
+- Facebook. (2025) React Native documentation.
+Available at: https://reactnative.dev/
+(Accessed: 22 October 2025)
+
+- React Navigation. (2025) React Navigation documentation.
+Available at: https://reactnavigation.org/
+(Accessed: 22 October 2025)
+
+- MDN Web Docs. (2025) TypeScript reference.
+Available at: https://developer.mozilla.org/
+(Accessed: 22 October 2025)
+
+- YouTube. (2025) ‘MyMenuApp – POE 2 Demo and Code Walkthrough’ [Video].
+Available at: [- https://youtu.be/-TbhXyywVpQ?si=4MBUfwaUSkrWbyA3]
+(Accessed: 22 October 2025)
+
+## AI Use Declaration
+
+- I, Zia Abdul, student number [Your Student Number], declare that this submission is my own work.
+Development:
+I used AI assistance (Abacus.AI ChatLLM/GPT-5) for:
+Clarifying Expo configuration (e.g., android.package in app.json).
+Drafting a concise video script and a README template.
+Reviewing code structure for POE 2 requirements (no auto prepopulation, one-time seed button, filters, count).
+All code in the repository was written, tested, and integrated by me. Any AI-suggested snippets were reviewed, adapted, and validated by me.
+- Attribution:
+I consulted official documentation including Expo, React Native, and React Navigation (see References)
+I have provided Harvard Anglia references for all external sources used.
+- Originality:
+No code was copied verbatim from unauthorized sources.
+Any third-party packages or assets are listed in package.json and credited where applicable.
+- Compliance:
+This work complies with The IIE’s policies on plagiarism and the acceptable use of generative AI.
