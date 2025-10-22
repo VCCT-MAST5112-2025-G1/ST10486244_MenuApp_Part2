@@ -6,7 +6,7 @@ import { RootTabParamList, RootStackParamList } from '../types';
 import HomeScreen from '../screens/HomeScreen';
 import AddMenuItemScreen from '../screens/AddMenuItemScreen';
 import { styles } from '../styles/Styles';
-const Ionicons: any = require('react-native-vector-icons/Ionicons');
+
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -42,13 +42,13 @@ const TabNavigator: React.FC = () => {
           title: 'Menu',
         }}
       />
-      { <Tab.Screen 
+      <Tab.Screen 
         name="AddItem" 
         component={AddMenuItemScreen}
         options={{
           title: 'Add Item',
         }}
-      /> }
+      />
     </Tab.Navigator>
   );
 };

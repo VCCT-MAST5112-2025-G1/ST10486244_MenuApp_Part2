@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   filterButton: {
-    backgroundColor: '#ffe0b2',
+    backgroundColor: '#80f05eff',
     paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 20,
