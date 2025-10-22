@@ -42,7 +42,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     }
   };
 
-  const formatPrice = (price: number) => `$${price.toFixed(2)}`;
+  const formatPrice = (price: number) => `R${price.toFixed(2)}`;
   const formatTagName = (tag: string) => tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ');
 
   return (

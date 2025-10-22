@@ -18,23 +18,23 @@ const HomeScreen: React.FC = () => {
   const { menuItems, addMenuItem, isLoaded, setIsLoaded } = useMenu();
   const [currentFilter, setCurrentFilter] = useState('all');
 
-  // Sample menu data
-  const sampleMenuItems: MenuItem[] = [
-    { id: '1', name: 'Caesar Salad', description: 'Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing', course: 'appetizer', price: 8.99, tags: ['veg', 'popular'] },
-    { id: '2', name: 'Buffalo Wings', description: 'Spicy chicken wings served with celery and blue cheese dip', course: 'appetizer', price: 12.50, tags: ['non-veg', 'popular'] },
-    { id: '3', name: 'Mozzarella Sticks', description: 'Crispy breaded mozzarella cheese served with marinara sauce', course: 'appetizer', price: 7.99, tags: ['veg'] },
-    { id: '4', name: 'Spaghetti Bolognese', description: 'Classic Italian pasta with rich meat sauce and parmesan cheese', course: 'main', price: 12.99, tags: ['non-veg', 'popular'] },
-    { id: '5', name: 'Grilled Chicken', description: 'Tender grilled chicken breast with herbs and spices', course: 'main', price: 15.50, tags: ['non-veg', 'new'] },
-    { id: '6', name: 'Cheese Pizza', description: 'Traditional pizza with mozzarella cheese and tomato sauce', course: 'main', price: 10.99, tags: ['veg', 'popular'] },
-    { id: '7', name: 'Veggie Burger', description: 'Plant-based burger with fresh vegetables and special sauce', course: 'main', price: 8.99, tags: ['veg', 'new'] },
-    { id: '8', name: 'Fish Tacos', description: 'Fresh fish tacos with cabbage slaw and lime crema', course: 'main', price: 13.50, tags: ['non-veg'] },
-    { id: '9', name: 'Chocolate Cake', description: 'Rich chocolate cake with chocolate ganache and fresh berries', course: 'dessert', price: 6.99, tags: ['veg', 'popular'] },
-    { id: '10', name: 'Tiramisu', description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone', course: 'dessert', price: 7.50, tags: ['veg'] },
-    { id: '11', name: 'Ice Cream Sundae', description: 'Vanilla ice cream with chocolate sauce, whipped cream, and cherry', course: 'dessert', price: 5.99, tags: ['veg'] },
-    { id: '12', name: 'Fresh Orange Juice', description: 'Freshly squeezed orange juice served chilled', course: 'beverage', price: 3.99, tags: ['veg'] },
-    { id: '13', name: 'Cappuccino', description: 'Rich espresso with steamed milk and foam', course: 'beverage', price: 4.50, tags: ['veg', 'popular'] },
-    { id: '14', name: 'Craft Beer', description: 'Local craft beer selection - ask server for today\'s options', course: 'beverage', price: 5.99, tags: ['non-veg'] },
-  ];
+  // Sample menu data (All prices in Rand)
+const sampleMenuItems: MenuItem[] = [
+  { id: '1', name: 'Caesar Salad', description: 'Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing', course: 'appetizer', price: 89.99, tags: ['veg', 'popular'] },
+  { id: '2', name: 'Buffalo Wings', description: 'Spicy chicken wings served with celery and blue cheese dip', course: 'appetizer', price: 125, tags: ['non-veg', 'popular'] },
+  { id: '3', name: 'Mozzarella Sticks', description: 'Crispy breaded mozzarella cheese served with marinara sauce', course: 'appetizer', price: 74.99, tags: ['veg'] },
+  { id: '4', name: 'Spaghetti Bolognese', description: 'Classic Italian pasta with rich meat sauce and parmesan cheese', course: 'main', price: 139.99, tags: ['non-veg', 'popular'] },
+  { id: '5', name: 'Grilled Chicken', description: 'Tender grilled chicken breast with herbs and spices', course: 'main', price: 155.50, tags: ['non-veg', 'new'] },
+  { id: '6', name: 'Cheese Pizza', description: 'Traditional pizza with mozzarella cheese and tomato sauce', course: 'main', price: 120.99, tags: ['veg', 'popular'] },
+  { id: '7', name: 'Veggie Burger', description: 'Plant-based burger with fresh vegetables and special sauce', course: 'main', price: 95.99, tags: ['veg', 'new'] },
+  { id: '8', name: 'Fish Tacos', description: 'Fresh fish tacos with cabbage slaw and lime crema', course: 'main', price: 135.50, tags: ['non-veg'] },
+  { id: '9', name: 'Chocolate Cake', description: 'Rich chocolate cake with chocolate ganache and fresh berries', course: 'dessert', price: 69.99, tags: ['veg', 'popular'] },
+  { id: '10', name: 'Tiramisu', description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone', course: 'dessert', price: 79.99, tags: ['veg'] },
+  { id: '11', name: 'Ice Cream Sundae', description: 'Vanilla ice cream with chocolate sauce, whipped cream, and cherry', course: 'dessert', price: 59.99, tags: ['veg'] },
+  { id: '12', name: 'Fresh Orange Juice', description: 'Freshly squeezed orange juice served chilled', course: 'beverage', price: 39.99, tags: ['veg'] },
+  { id: '13', name: 'Cappuccino', description: 'Rich espresso with steamed milk and foam', course: 'beverage', price: 42.50, tags: ['veg', 'popular'] },
+  { id: '14', name: 'Craft Beer', description: 'Local craft beer selection - ask server for today\'s options', course: 'beverage', price: 59.99, tags: ['non-veg'] },
+];
 
   const filterOptions = [
     { key: 'all', label: 'All' },
@@ -90,7 +90,7 @@ const HomeScreen: React.FC = () => {
     <View style={styles.emptyState}>
       <Text style={styles.emptyStateText}>
         {menuItems.length === 0
-          ? 'Welcome to My Food App!\nLoad the menu or add a new dish to get started.'
+          ? 'Welcome to My Food App!\n Load the menu to get started and to add your own dishes.'
           : 'No items match the current filter'}
       </Text>
     </View>
@@ -150,7 +150,7 @@ const HomeScreen: React.FC = () => {
               <View key={index} style={styles.statItem}>
                 <Text style={styles.statLabel}>{stat.category}:</Text>
                 <Text style={styles.statValue}>
-                  {stat.count} items, avg ${stat.averagePrice.toFixed(2)}
+                  {stat.count} items
                 </Text>
               </View>
             ))}
