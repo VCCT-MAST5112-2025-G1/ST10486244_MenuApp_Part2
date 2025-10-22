@@ -10,6 +10,7 @@ import { styles } from '../styles/Styles';
 const Tab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
+
 // Tab Navigator Component
 const TabNavigator: React.FC = () => {
   return (
@@ -42,13 +43,13 @@ const TabNavigator: React.FC = () => {
           title: 'Menu',
         }}
       />
-      <Tab.Screen 
+      { <Tab.Screen 
         name="AddItem" 
         component={AddMenuItemScreen}
         options={{
           title: 'Add Item',
         }}
-      />
+      /> }
     </Tab.Navigator>
   );
 };
@@ -67,3 +68,4 @@ const AppNavigator: React.FC = () => {
 };
 
 export default AppNavigator;
+       
