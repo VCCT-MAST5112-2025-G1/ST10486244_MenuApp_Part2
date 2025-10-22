@@ -13,6 +13,7 @@ import { Picker } from '@react-native-picker/picker';
 import { MenuItem } from '../types/types';
 import { styles } from '../styles/Styles';
 
+
 interface AddMenuItemProps {
   onAddItem: (item: Omit<MenuItem, 'id'>) => void;
   onCancel?: () => void;
