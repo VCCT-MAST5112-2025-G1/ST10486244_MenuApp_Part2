@@ -38,7 +38,7 @@ const sampleMenuItems: MenuItem[] = [
 
   const filterOptions = [
     { key: 'all', label: 'All' },
-    { key: 'appetizer', label: 'Starters' },
+    { key: 'appetizer', label: 'Appetizer' },
     { key: 'main', label: 'Main Course' },
     { key: 'dessert', label: 'Dessert' },
     { key: 'beverage', label: 'Beverages' },

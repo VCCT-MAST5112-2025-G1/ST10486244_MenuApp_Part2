@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MyMenuApp",
-    "slug": "MyMenuApp",
+    "slug": "mymenuapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yourname.mymenuapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
