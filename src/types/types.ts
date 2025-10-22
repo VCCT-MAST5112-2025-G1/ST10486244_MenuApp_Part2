@@ -20,5 +20,4 @@ export type RootTabParamList = {
 
 export type RootStackParamList = {
   MainTabs: undefined;
-  AddMenuItem: undefined;
 };

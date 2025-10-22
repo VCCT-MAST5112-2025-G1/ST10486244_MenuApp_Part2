@@ -10,7 +10,7 @@ import {
   Platform,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import { MenuItem } from '../types';
+import { MenuItem } from '../types/types';
 import { styles } from '../styles/Styles';
 
 interface AddMenuItemProps {
@@ -35,11 +35,7 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
   const availableTags = ['veg', 'non-veg', 'popular', 'new'];
 
   const toggleTag = (tag: string) => {
-    setTags(prev => 
-      prev.includes(tag) 
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
-    );
+    setTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
   };
 
   const validateForm = (): boolean => {
@@ -47,23 +43,19 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
       Alert.alert('Error', 'Please enter a dish name');
       return false;
     }
-
     if (!description.trim()) {
       Alert.alert('Error', 'Please enter a description');
       return false;
     }
-
     const priceValue = parseFloat(price);
     if (isNaN(priceValue) || priceValue <= 0) {
       Alert.alert('Error', 'Please enter a valid price');
       return false;
     }
-
     if (tags.length === 0) {
       Alert.alert('Error', 'Please select at least one tag (veg/non-veg)');
       return false;
     }
-
     return true;
   };
 
@@ -79,20 +71,19 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
     };
 
     onAddItem(newItem);
-    
+    Alert.alert('Success', 'Menu item added successfully!');
+
     // Reset form
     setName('');
     setDescription('');
     setCourse('main');
     setPrice('');
     setTags([]);
-    
-    Alert.alert('Success', 'Menu item added successfully!');
   };
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.container} 
+    <KeyboardAvoidingView
+      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView style={styles.formContainer} showsVerticalScrollIndicator={false}>
@@ -130,11 +121,7 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
               onValueChange={(value) => setCourse(value)}
             >
               {courseOptions.map((option) => (
-                <Picker.Item
-                  key={option.value}
-                  label={option.label}
-                  value={option.value}
-                />
+                <Picker.Item key={option.value} label={option.label} value={option.value} />
               ))}
             </Picker>
           </View>
@@ -160,18 +147,14 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
                 key={tag}
                 style={[
                   styles.tag,
-                  tags.includes(tag) 
-                    ? { backgroundColor: '#ff7043' }
-                    : { backgroundColor: '#ffe0b2' }
+                  tags.includes(tag) ? { backgroundColor: '#ff7043' } : { backgroundColor: '#ffe0b2' },
                 ]}
                 onPress={() => toggleTag(tag)}
               >
                 <Text
                   style={[
                     styles.tagText,
-                    tags.includes(tag) 
-                      ? { color: '#fff' }
-                      : { color: '#333' }
+                    tags.includes(tag) ? { color: '#fff' } : { color: '#333' },
                   ]}
                 >
                   {tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ')}
@@ -186,8 +169,8 @@ const AddMenuItem: React.FC<AddMenuItemProps> = ({ onAddItem, onCancel }) => {
         </TouchableOpacity>
 
         {onCancel && (
-          <TouchableOpacity 
-            style={[styles.submitButton, { backgroundColor: '#666', marginTop: 10 }]} 
+          <TouchableOpacity
+            style={[styles.submitButton, { backgroundColor: '#666', marginTop: 10 }]}
             onPress={onCancel}
           >
             <Text style={styles.submitButtonText}>Cancel</Text>

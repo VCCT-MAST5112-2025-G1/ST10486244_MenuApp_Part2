@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { MenuItem } from '../types';
+import { MenuItem } from '../types/types';
 
 interface MenuContextType {
   menuItems: MenuItem[];
@@ -18,21 +18,18 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Generate unique ID to avoid duplicate key warnings
   const addMenuItem = (newItem: Omit<MenuItem, 'id'>) => {
     const item: MenuItem = {
       ...newItem,
-      id: Date.now().toString(),
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     };
     setMenuItems(prev => [...prev, item]);
+    setIsLoaded(true); // ensure Home shows items even if sample menu not loaded
   };
 
   return (
-    <MenuContext.Provider value={{
-      menuItems,
-      addMenuItem,
-      isLoaded,
-      setIsLoaded,
-    }}>
+    <MenuContext.Provider value={{ menuItems, addMenuItem, isLoaded, setIsLoaded }}>
       {children}
     </MenuContext.Provider>
   );

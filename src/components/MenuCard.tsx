@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { MenuItem } from '../types';
+import { View, Text } from 'react-native';
+import { MenuItem } from '../types/types';
 import { styles, colors } from '../styles/Styles';
 
 interface MenuCardProps {
@@ -42,28 +42,21 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     }
   };
 
-  const formatPrice = (price: number) => {
-    return `$${price.toFixed(2)}`;
-  };
-
-  const formatTagName = (tag: string) => {
-    return tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ');
-  };
+  const formatPrice = (price: number) => `$${price.toFixed(2)}`;
+  const formatTagName = (tag: string) => tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ');
 
   return (
     <View style={styles.menuCard}>
       <Text style={styles.cardTitle}>{item.name}</Text>
-      
+
       {item.description && (
         <Text style={styles.cardDescription}>{item.description}</Text>
       )}
-      
+
       <View style={styles.cardTags}>
         {item.tags.map((tag, index) => (
           <View key={index} style={getTagStyle(tag)}>
-            <Text style={getTagTextStyle(tag)}>
-              {formatTagName(tag)}
-            </Text>
+            <Text style={getTagTextStyle(tag)}>{formatTagName(tag)}</Text>
           </View>
         ))}
         <View style={[styles.tag, { backgroundColor: colors.backgroundSecondary }]}>
@@ -72,7 +65,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
           </Text>
         </View>
       </View>
-      
+
       <Text style={styles.cardPrice}>{formatPrice(item.price)}</Text>
     </View>
   );
