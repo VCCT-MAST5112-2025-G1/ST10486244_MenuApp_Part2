@@ -11,12 +11,10 @@ import { styles } from '../styles/Styles';
 const AddMenuItemScreen: React.FC = () => {
   const navigation = useNavigation();
   const { addMenuItem } = useMenu();
-
-  const handleAddItem = (newItem: Omit<MenuItem, 'id'>) => {
+const handleAddItem = (newItem: Omit<MenuItem, 'id'>) => {
+   
     addMenuItem(newItem);
-    
-    // Navigate back to home screen after adding
-    navigation.navigate('Home' as never);
+    navigation.goBack();
   };
 
   const handleCancel = () => {

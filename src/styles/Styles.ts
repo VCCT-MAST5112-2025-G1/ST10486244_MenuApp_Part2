@@ -74,9 +74,12 @@ export const styles = StyleSheet.create({
   },
 
   // Filter bar styles
+ filterBarContainer: {
+    height: 50,
+    marginBottom: 15,
+  },
   filterBar: {
     flexDirection: 'row',
-    marginBottom: 15,
     paddingBottom: 5,
   },
   filterButton: {

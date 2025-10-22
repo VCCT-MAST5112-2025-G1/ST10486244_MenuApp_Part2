@@ -156,7 +156,7 @@ const HomeScreen: React.FC = () => {
   };
 
 const handleAddItem = () => {
-    navigation.navigate('AddMenuItem' as never);
+    navigation.navigate('AddItem' as never);
   };
 
   const filteredItems = useMemo(() => {
@@ -203,19 +203,20 @@ const handleAddItem = () => {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>🍽️ My Food App</Text>
-        <TouchableOpacity style={styles.headerButton} onPress={handleAddItem}>
+       {/* DISABLED: Top right Add Dish button - using bottom tab instead */}
+        {/* <TouchableOpacity style={styles.headerButton} onPress={handleAddItem}>
           <Text style={styles.headerButtonText}>+ Add Dish</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
         {/* Filter Bar */}
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          style={styles.filterBar}
-          contentContainerStyle={{ paddingRight: 10 }}
-        >
+        <View style={styles.filterBarContainer}>
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingRight: 10 }}
+          >
           {filterOptions.map((option) => (
             <TouchableOpacity
               key={option.key}
@@ -236,7 +237,7 @@ const handleAddItem = () => {
             </TouchableOpacity>
           ))}
         </ScrollView>
-
+        </View>
         {/* Counter */}
         {isLoaded && (
           <View style={styles.counter}>
