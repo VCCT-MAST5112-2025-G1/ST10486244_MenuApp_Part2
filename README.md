@@ -42,6 +42,17 @@ Clean, reusable UI
 - Home: Displays full menu, total count, filters, and “Load Menu” button
 - Add Item:	Allows adding new dishes with name, description, course, and price
 
+## Setup & Run
+
+-	Node.js 18+
+-	Expo CLI (npm install -g expo-cli)
+-Installation
+bash Copy _npm install _Run the app
+bash Copy _npx expo start  
+-Then choose:
+-	Android Emulator,
+-	iOS Simulator, or
+-	Scan QR code with Expo Go app.
 
 
 
@@ -54,7 +65,11 @@ Clean, reusable UI
 - 
 - ![WhatsApp Image 2025-10-22 at 16 16 30_27e7ffb0](https://github.com/user-attachments/assets/d5f909fc-a55d-46de-93bb-d89fcb8e4e7c)
 
+## Tested on
+- Device Pixel 7 Emulator	1080 × 2400
+- Works well
 
-
-
-## Demo Video (Unlisted)
+## YouTube 
+- 
+## GitHub
+- 
