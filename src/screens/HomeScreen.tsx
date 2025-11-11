@@ -100,7 +100,7 @@ const sampleMenuItems: MenuItem[] = [
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>🍽️ My Food App</Text>
+        <Text style={styles.headerTitle}> My Food App</Text>
         {/* Disabled the top-right Add Dish button as requested */}
         {/* <TouchableOpacity style={styles.headerButton} onPress={handleAddItem}>
           <Text style={styles.headerButtonText}>+ Add Dish</Text>
