@@ -4,6 +4,7 @@ import { MenuItem } from '../types/types';
 interface MenuContextType {
   menuItems: MenuItem[];
   addMenuItem: (item: Omit<MenuItem, 'id'>) => void;
+  removeMenuItem: (id: string) => void; // <-- added
   isLoaded: boolean;
   setIsLoaded: (loaded: boolean) => void;
 }
@@ -18,18 +19,23 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Generate unique ID to avoid duplicate key warnings
   const addMenuItem = (newItem: Omit<MenuItem, 'id'>) => {
     const item: MenuItem = {
       ...newItem,
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
     };
     setMenuItems(prev => [...prev, item]);
-    setIsLoaded(true); // ensure Home shows items even if sample menu not loaded
+    setIsLoaded(true);
   };
 
+  
+// src/context/MenuContext.tsx — inside MenuProvider
+const removeMenuItem = (id: string) => {
+  setMenuItems(prev => prev.filter(item => item.id !== id));
+};
+
   return (
-    <MenuContext.Provider value={{ menuItems, addMenuItem, isLoaded, setIsLoaded }}>
+    <MenuContext.Provider value={{ menuItems, addMenuItem, removeMenuItem, isLoaded, setIsLoaded }}>
       {children}
     </MenuContext.Provider>
   );

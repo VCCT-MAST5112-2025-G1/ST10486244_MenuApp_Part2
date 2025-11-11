@@ -15,26 +15,25 @@ import { styles } from '../styles/Styles';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
-  const { menuItems, addMenuItem, isLoaded, setIsLoaded } = useMenu();
+  const { menuItems, addMenuItem, removeMenuItem, isLoaded, setIsLoaded } = useMenu();
   const [currentFilter, setCurrentFilter] = useState('all');
 
-  // Sample menu data (All prices in Rand)
-const sampleMenuItems: MenuItem[] = [
-  { id: '1', name: 'Caesar Salad', description: 'Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing', course: 'appetizer', price: 89.99, tags: ['veg', 'popular'] },
-  { id: '2', name: 'Buffalo Wings', description: 'Spicy chicken wings served with celery and blue cheese dip', course: 'appetizer', price: 125, tags: ['non-veg', 'popular'] },
-  { id: '3', name: 'Mozzarella Sticks', description: 'Crispy breaded mozzarella cheese served with marinara sauce', course: 'appetizer', price: 74.99, tags: ['veg'] },
-  { id: '4', name: 'Spaghetti Bolognese', description: 'Classic Italian pasta with rich meat sauce and parmesan cheese', course: 'main', price: 139.99, tags: ['non-veg', 'popular'] },
-  { id: '5', name: 'Grilled Chicken', description: 'Tender grilled chicken breast with herbs and spices', course: 'main', price: 155.50, tags: ['non-veg', 'new'] },
-  { id: '6', name: 'Cheese Pizza', description: 'Traditional pizza with mozzarella cheese and tomato sauce', course: 'main', price: 120.99, tags: ['veg', 'popular'] },
-  { id: '7', name: 'Veggie Burger', description: 'Plant-based burger with fresh vegetables and special sauce', course: 'main', price: 95.99, tags: ['veg', 'new'] },
-  { id: '8', name: 'Fish Tacos', description: 'Fresh fish tacos with cabbage slaw and lime crema', course: 'main', price: 135.50, tags: ['non-veg'] },
-  { id: '9', name: 'Chocolate Cake', description: 'Rich chocolate cake with chocolate ganache and fresh berries', course: 'dessert', price: 69.99, tags: ['veg', 'popular'] },
-  { id: '10', name: 'Tiramisu', description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone', course: 'dessert', price: 79.99, tags: ['veg'] },
-  { id: '11', name: 'Ice Cream Sundae', description: 'Vanilla ice cream with chocolate sauce, whipped cream, and cherry', course: 'dessert', price: 59.99, tags: ['veg'] },
-  { id: '12', name: 'Fresh Orange Juice', description: 'Freshly squeezed orange juice served chilled', course: 'beverage', price: 39.99, tags: ['veg'] },
-  { id: '13', name: 'Cappuccino', description: 'Rich espresso with steamed milk and foam', course: 'beverage', price: 42.50, tags: ['veg', 'popular'] },
-  { id: '14', name: 'Craft Beer', description: 'Local craft beer selection - ask server for today\'s options', course: 'beverage', price: 59.99, tags: ['non-veg'] },
-];
+  const sampleMenuItems: MenuItem[] = [
+    { id: '1', name: 'Caesar Salad', description: 'Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing', course: 'appetizer', price: 89.99, tags: ['veg', 'popular'] },
+    { id: '2', name: 'Buffalo Wings', description: 'Spicy chicken wings served with celery and blue cheese dip', course: 'appetizer', price: 125, tags: ['non-veg', 'popular'] },
+    { id: '3', name: 'Mozzarella Sticks', description: 'Crispy breaded mozzarella cheese served with marinara sauce', course: 'appetizer', price: 74.99, tags: ['veg'] },
+    { id: '4', name: 'Spaghetti Bolognese', description: 'Classic Italian pasta with rich meat sauce and parmesan cheese', course: 'main', price: 139.99, tags: ['non-veg', 'popular'] },
+    { id: '5', name: 'Grilled Chicken', description: 'Tender grilled chicken breast with herbs and spices', course: 'main', price: 155.50, tags: ['non-veg', 'new'] },
+    { id: '6', name: 'Cheese Pizza', description: 'Traditional pizza with mozzarella cheese and tomato sauce', course: 'main', price: 120.99, tags: ['veg', 'popular'] },
+    { id: '7', name: 'Veggie Burger', description: 'Plant-based burger with fresh vegetables and special sauce', course: 'main', price: 95.99, tags: ['veg', 'new'] },
+    { id: '8', name: 'Fish Tacos', description: 'Fresh fish tacos with cabbage slaw and lime crema', course: 'main', price: 135.50, tags: ['non-veg'] },
+    { id: '9', name: 'Chocolate Cake', description: 'Rich chocolate cake with chocolate ganache and fresh berries', course: 'dessert', price: 69.99, tags: ['veg', 'popular'] },
+    { id: '10', name: 'Tiramisu', description: 'Classic Italian dessert with coffee-soaked ladyfingers and mascarpone', course: 'dessert', price: 79.99, tags: ['veg'] },
+    { id: '11', name: 'Ice Cream Sundae', description: 'Vanilla ice cream with chocolate sauce, whipped cream, and cherry', course: 'dessert', price: 59.99, tags: ['veg'] },
+    { id: '12', name: 'Fresh Orange Juice', description: 'Freshly squeezed orange juice served chilled', course: 'beverage', price: 39.99, tags: ['veg'] },
+    { id: '13', name: 'Cappuccino', description: 'Rich espresso with steamed milk and foam', course: 'beverage', price: 42.50, tags: ['veg', 'popular'] },
+    { id: '14', name: 'Craft Beer', description: 'Local craft beer selection - ask server for today\'s options', course: 'beverage', price: 59.99, tags: ['non-veg'] },
+  ];
 
   const filterOptions = [
     { key: 'all', label: 'All' },
@@ -59,10 +58,6 @@ const sampleMenuItems: MenuItem[] = [
     setIsLoaded(true);
   };
 
-  const handleAddItem = () => {
-    navigation.navigate('AddItem' as never);
-  };
-
   const filteredItems = useMemo(() => {
     if (currentFilter === 'all') return menuItems;
     return menuItems.filter(item => item.course === currentFilter);
@@ -84,7 +79,38 @@ const sampleMenuItems: MenuItem[] = [
     }));
   }, [menuItems]);
 
-  const renderMenuItem = ({ item }: { item: MenuItem }) => <MenuCard item={item} />;
+  const renderMenuItem = ({ item }: { item: MenuItem }) => (
+    <View style={{ marginBottom: 12 }}>
+      <MenuCard item={item} />
+      <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 8 }}>
+        <TouchableOpacity
+          onPress={() =>
+            Alert.alert(
+              'Remove item',
+              `Are you sure you want to remove "${item.name}" from the menu?`,
+              [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                  text: 'Remove',
+                  style: 'destructive',
+                  onPress: () => removeMenuItem(item.id),
+                },
+              ],
+              { cancelable: true }
+            )
+          }
+          style={{
+            paddingHorizontal: 12,
+            paddingVertical: 8,
+            backgroundColor: '#c62828',
+            borderRadius: 8,
+          }}
+        >
+          <Text style={{ color: '#fff', fontWeight: '600' }}>Remove</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 
   const renderEmptyState = () => (
     <View style={styles.emptyState}>
@@ -98,17 +124,11 @@ const sampleMenuItems: MenuItem[] = [
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}> My Food App</Text>
-        {/* Disabled the top-right Add Dish button as requested */}
-        {/* <TouchableOpacity style={styles.headerButton} onPress={handleAddItem}>
-          <Text style={styles.headerButtonText}>+ Add Dish</Text>
-        </TouchableOpacity> */}
       </View>
 
       <ScrollView style={styles.contentContainer} showsVerticalScrollIndicator={false}>
-        {/* Filter Bar */}
         <View style={styles.filterBarContainer}>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingRight: 10 }}>
             {filterOptions.map((option) => (
@@ -133,7 +153,6 @@ const sampleMenuItems: MenuItem[] = [
           </ScrollView>
         </View>
 
-        {/* Counter */}
         {menuItems.length > 0 && (
           <View style={styles.counter}>
             <Text style={styles.counterText}>
@@ -142,22 +161,20 @@ const sampleMenuItems: MenuItem[] = [
           </View>
         )}
 
-        {/* Statistics */}
-{menuItems.length > 0 && categoryStats.length > 0 && (
-  <View style={styles.statsContainer}>
-    <Text style={styles.statsTitle}>Category Statistics</Text>
-    {categoryStats.map((stat, index) => (
-      <View key={index} style={styles.statItem}>
-        <Text style={styles.statLabel}>{stat.category}:</Text>
-        <Text style={styles.statValue}>
-          {stat.count} items • Avg: R{stat.averagePrice.toFixed(2)}
-        </Text>
-      </View>
-    ))}
-  </View>
-)}
+        {menuItems.length > 0 && categoryStats.length > 0 && (
+          <View style={styles.statsContainer}>
+            <Text style={styles.statsTitle}>Category Statistics</Text>
+            {categoryStats.map((stat, index) => (
+              <View key={index} style={styles.statItem}>
+                <Text style={styles.statLabel}>{stat.category}:</Text>
+                <Text style={styles.statValue}>
+                  {stat.count} items • Avg: R{stat.averagePrice.toFixed(2)}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
 
-        {/* Menu Items */}
         <View style={styles.menuContainer}>
           {menuItems.length > 0 ? (
             <FlatList
@@ -172,7 +189,6 @@ const sampleMenuItems: MenuItem[] = [
           )}
         </View>
 
-        {/* Load Menu Button */}
         {menuItems.length === 0 && (
           <TouchableOpacity style={styles.submitButton} onPress={loadMenu}>
             <Text style={styles.submitButtonText}>Load Menu</Text>
