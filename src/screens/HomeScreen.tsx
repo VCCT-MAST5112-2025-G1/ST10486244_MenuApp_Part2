@@ -83,31 +83,17 @@ const HomeScreen: React.FC = () => {
     <View style={{ marginBottom: 12 }}>
       <MenuCard item={item} />
       <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 8 }}>
-        <TouchableOpacity
-          onPress={() =>
-            Alert.alert(
-              'Remove item',
-              `Are you sure you want to remove "${item.name}" from the menu?`,
-              [
-                { text: 'Cancel', style: 'cancel' },
-                {
-                  text: 'Remove',
-                  style: 'destructive',
-                  onPress: () => removeMenuItem(item.id),
-                },
-              ],
-              { cancelable: true }
-            )
-          }
-          style={{
-            paddingHorizontal: 12,
-            paddingVertical: 8,
-            backgroundColor: '#c62828',
-            borderRadius: 8,
-          }}
-        >
-          <Text style={{ color: '#fff', fontWeight: '600' }}>Remove</Text>
-        </TouchableOpacity>
+       <TouchableOpacity
+  onPress={() => removeMenuItem(item.id)}
+  style={{
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: '#c62828',
+    borderRadius: 8,
+  }}
+>
+  <Text style={{ color: '#fff', fontWeight: '600' }}>Remove</Text>
+</TouchableOpacity>
       </View>
     </View>
   );

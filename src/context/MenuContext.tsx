@@ -4,7 +4,7 @@ import { MenuItem } from '../types/types';
 interface MenuContextType {
   menuItems: MenuItem[];
   addMenuItem: (item: Omit<MenuItem, 'id'>) => void;
-  removeMenuItem: (id: string) => void; // <-- added
+  removeMenuItem: (id: string) => void;
   isLoaded: boolean;
   setIsLoaded: (loaded: boolean) => void;
 }
@@ -28,11 +28,9 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
     setIsLoaded(true);
   };
 
-  
-// src/context/MenuContext.tsx — inside MenuProvider
-const removeMenuItem = (id: string) => {
-  setMenuItems(prev => prev.filter(item => item.id !== id));
-};
+  const removeMenuItem = (id: string) => {
+    setMenuItems(prev => prev.filter(item => item.id !== id));
+  };
 
   return (
     <MenuContext.Provider value={{ menuItems, addMenuItem, removeMenuItem, isLoaded, setIsLoaded }}>
