@@ -15,9 +15,11 @@ export interface CategoryStats {
 
 export type RootTabParamList = {
   Home: undefined;
+  Guest: undefined;
   AddItem: undefined;
 };
 
 export type RootStackParamList = {
   MainTabs: undefined;
 };
+
