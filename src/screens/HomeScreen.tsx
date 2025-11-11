@@ -143,19 +143,19 @@ const sampleMenuItems: MenuItem[] = [
         )}
 
         {/* Statistics */}
-        {menuItems.length > 0 && categoryStats.length > 0 && (
-          <View style={styles.statsContainer}>
-            <Text style={styles.statsTitle}>Category Statistics</Text>
-            {categoryStats.map((stat, index) => (
-              <View key={index} style={styles.statItem}>
-                <Text style={styles.statLabel}>{stat.category}:</Text>
-                <Text style={styles.statValue}>
-                  {stat.count} items
-                </Text>
-              </View>
-            ))}
-          </View>
-        )}
+{menuItems.length > 0 && categoryStats.length > 0 && (
+  <View style={styles.statsContainer}>
+    <Text style={styles.statsTitle}>Category Statistics</Text>
+    {categoryStats.map((stat, index) => (
+      <View key={index} style={styles.statItem}>
+        <Text style={styles.statLabel}>{stat.category}:</Text>
+        <Text style={styles.statValue}>
+          {stat.count} items • Avg: R{stat.averagePrice.toFixed(2)}
+        </Text>
+      </View>
+    ))}
+  </View>
+)}
 
         {/* Menu Items */}
         <View style={styles.menuContainer}>
