@@ -83,9 +83,9 @@ bash Copy _npx expo start
 - Works well
 
 ## YouTube 
-- https://youtu.be/-TbhXyywVpQ?si=4MBUfwaUSkrWbyA3
+- 
 ## GitHub
-- https://github.com/VCCT-MAST5112-2025-G1/ST10486244_MenuApp_Part2
+- 
 
 ## Referencing
 
@@ -105,9 +105,6 @@ Available at: https://reactnavigation.org/
 Available at: https://developer.mozilla.org/
 (Accessed: 22 October 2025)
 
-- YouTube. (2025) ‘MyMenuApp – POE 2 Demo and Code Walkthrough’ [Video].
-Available at: [- https://youtu.be/-TbhXyywVpQ?si=4MBUfwaUSkrWbyA3]
-(Accessed: 22 October 2025)
 
 ## AI Use Declaration
 
