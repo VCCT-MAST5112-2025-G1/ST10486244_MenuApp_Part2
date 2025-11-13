@@ -83,7 +83,7 @@ bash Copy _npx expo start
 - Works well
 
 ## YouTube 
-- 
+- https://youtu.be/K12d3QqQ1J4?si=gIH8-jJd6PHVXshv
 ## GitHub
 - 
 
