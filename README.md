@@ -1,8 +1,7 @@
 # My Food App (Part 2)
 
 ## Introduction 
-A one-screen React Native (Expo) application built for POE 2. The app allows the chef to manage a restaurant menu by adding dishes with name, description, course, and price.
-It includes a one-time sample load button to help markers, filtering options, and category statistics.
+My Food App is a React Native (Expo) application that allows a chef to manage a restaurant menu. The app supports adding and removing menu items, shows category statistics (including average price per course), and provides a separate guest-facing filter page.
 
 ## Setup
 - Node version: vXX
@@ -13,11 +12,17 @@ It includes a one-time sample load button to help markers, filtering options, an
 
   ## Features Implemented
   
-  Add new menu items with:
--	Dish name
-- Description
-- Course (Starters, Mains, Dessert, Beverages)
-- Price
+ - Add new menu items with: name, description, course (appetizer/main/dessert/beverage), and price.
+- Add Item moved to a separate screen (Add Item tab).
+- One-time "Load Menu" sample data button for demo/testing.
+- In-memory menu stored in an array (`menuItems` in context).
+- Chef can remove items from the menu (remove button on Home).
+- Home screen displays:
+  - Complete menu
+  - Total dishes count
+  - Category statistics (count and average price per course)
+- Separate Filter tab (guest-facing) to filter menu items by course (read-only).
+- Clean, reusable UI and consistent styling.
   
   One-time “Load Menu” button (for testing/demo)
 -	Seeds predefined sample dishes once
@@ -41,6 +46,8 @@ Clean, reusable UI
   
 - Home: Displays full menu, total count, filters, and “Load Menu” button
 - Add Item:	Allows adding new dishes with name, description, course, and price
+- Filter: Allows user to filter menu items by categories such as Main Course ,Appetizer ,Beverage , dessert
+ 
 
 ## Setup & Run
 
@@ -54,16 +61,22 @@ bash Copy _npx expo start
 -	iOS Simulator, or
 -	Scan QR code with Expo Go app.
 
+## Change log from part 2 to Final (edits and additions made)
+- Filter Screen added 
+- Item Removal: Implemented functionality for the chef to remove menu items from the Home screen.
+- Add Item Screen:"Add Item" functionality is on its own dedicated screen
+- Home screen now focuses on displaying the complete menu and category statistics (including average prices)
 
 
 ## Screenshots
-- ![WhatsApp Image 2025-10-22 at 16 16 30_d93fa0aa](https://github.com/user-attachments/assets/da5229bf-89c1-46b5-9999-d51c69ecf377)
-- 
-- ![WhatsApp Image 2025-10-22 at 16 16 30_373b87d8](https://github.com/user-attachments/assets/8e5535a8-17d0-40a6-9a7d-21b7eb6d8613)
-- 
-- ![WhatsApp Image 2025-10-22 at 16 16 30_cca7128f](https://github.com/user-attachments/assets/24223cbd-0ec0-4e1f-ab93-c7004fa06e92)
-- 
-- ![WhatsApp Image 2025-10-22 at 16 16 30_27e7ffb0](https://github.com/user-attachments/assets/d5f909fc-a55d-46de-93bb-d89fcb8e4e7c)
+- <img width="408" height="722" alt="image" src="https://github.com/user-attachments/assets/0ec7fd35-6a82-4cd0-97ec-2e13aec36911" />
+
+- <img width="399" height="719" alt="image" src="https://github.com/user-attachments/assets/8a1c6ffd-3dd0-4ea5-ae7c-184bef59eb13" />
+
+- <img width="405" height="725" alt="image" src="https://github.com/user-attachments/assets/00c375f2-3f9d-4f50-b978-d0dc98b27ce2" />
+
+- <img width="407" height="722" alt="image" src="https://github.com/user-attachments/assets/d3e229cc-af3f-49d6-b642-978ef9c2eafb" />
+
 
 ## Tested on
 - Device Pixel 7 Emulator	1080 × 2400
