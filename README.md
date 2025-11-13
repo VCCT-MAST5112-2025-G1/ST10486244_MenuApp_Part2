@@ -85,7 +85,7 @@ bash Copy _npx expo start
 ## YouTube 
 - https://youtu.be/K12d3QqQ1J4?si=gIH8-jJd6PHVXshv
 ## GitHub
-- 
+- https://github.com/VCCT-MAST5112-2025-G1/ST10486244_MenuApp_Part2
 
 ## Referencing
 
